@@ -40,6 +40,7 @@ class DocumentsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
