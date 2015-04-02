@@ -12,7 +12,8 @@ class DocumentsController < ApplicationController
   # GET /documents/1.json
   def show
     @document = Document.find(params[:id])
-    render json: @document
+    render json: @document, root: false
+
   end
 
   # GET /documents/new
