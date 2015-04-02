@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-
+  
  # GET /documents
   # GET /documents.json
   def index
@@ -31,10 +31,10 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        # format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
-        format.html { render :new }
+        # format.html { render :new }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
@@ -45,10 +45,9 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.json { render :show, status: :ok, location: @document }
+        format.json { head :no_content }
+        # format.json { render :show, status: :ok, location: @document }
       else
-        format.html { render :edit }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
@@ -68,10 +67,12 @@ class DocumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_document
       @document = Document.find(params[:id])
+      puts '@@@@@@@@@@'
+      puts  @document.body
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document)
+      params.require(:document).permit(:body)
     end
 end

@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use to provide support for Cross-Origin Resource Sharing (CORS) with Rack
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'active_model_serializers'
 
