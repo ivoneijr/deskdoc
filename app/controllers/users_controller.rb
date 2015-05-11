@@ -1,11 +1,22 @@
 class UsersController < ApplicationController
+  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    render json: @users
+
+    @username = params[:username]
+    @password = params[:password]
+    
+    if @username && @password
+      @user = User.find_by(username: @username, password: @password)
+      render json: @user  
+    else
+      # @users = User.all
+      render json: 'not found'    
+    end
+
   end
 
   # GET /users/1
@@ -20,9 +31,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-  end
+  # # GET /users/1/edit
+  # def edit
+  # end
 
   # POST /users
   # POST /users.json

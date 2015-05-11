@@ -48,13 +48,13 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'active_model_serializers'
 
-group :development, :test do
-  # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+# group :development, :test do
+#   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
+#   gem 'debugger'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-end
+#   # Access an IRB console on exception pages or by using <%= console %> in views
+#   gem 'web-console', '~> 2.0'
+# end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
@@ -62,7 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Make any Ruby object quack like ActiveRecord
 gem 'active_type'
 
-# A toolkit of support libraries and Ruby core extensions extracted from the Rails framework. 
+# A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
 # Rich support for multibyte strings, internationalization, time zones, and testing.
 gem 'activesupport'
 
