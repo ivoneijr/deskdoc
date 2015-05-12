@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -8,13 +8,13 @@ class UsersController < ApplicationController
 
     @username = params[:username]
     @password = params[:password]
-    
+
     if @username && @password
       @user = User.find_by(username: @username, password: @password)
-      render json: @user  
+      render json: @user
     else
       # @users = User.all
-      render json: 'not found'    
+      render json: 'not found'
     end
 
   end
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password)
+      params.require(:user).permit(:name, :username, :password)
     end
 
 end

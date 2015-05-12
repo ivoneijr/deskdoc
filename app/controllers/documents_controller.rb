@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
  # GET /documents
@@ -13,7 +14,6 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.find(params[:id])
     render json: @document, root: false
-
   end
 
   # GET /documents/new
@@ -21,37 +21,13 @@ class DocumentsController < ApplicationController
     @document = Document.new
   end
 
-  # GET /documents/1/edit
-  def edit
-  end
-
-  # POST /documents
-  # POST /documents.json
-  def create
-    @document = Document.new(document_params)
-
-    respond_to do |format|
-      if @document.save
-        # format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
-      else
-        # format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
-    respond_to do |format|
-      if @document.update(document_params)
-        format.json { head :no_content }
-        # format.json { render :show, status: :ok, location: @document }
-      else
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
+    if @document.update(document_params)
+      render json: @document
+    else
+      render json: @document.errors, status: :unprocessable_entity
     end
   end
 
@@ -66,15 +42,13 @@ class DocumentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_document
       @document = Document.find(params[:id])
-      puts '@@@@@@@@@@'
-      puts  @document.body
+      # puts '@@@@@@@@@@'
+      # puts  @document.body
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:body)
+      params.require(:document).permit(:body,:title)
     end
 end
